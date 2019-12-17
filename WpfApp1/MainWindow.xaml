@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="#FF50DE6A">
-        
+        <Button x:Name="Btn_LanciaDadi" Content="Lancia Dadi" HorizontalAlignment="Left" Margin="49,118,0,0" VerticalAlignment="Top" Width="147" Height="51" Click="Btn_LanciaDadi_Click" FontSize="20"/>
+        <Label x:Name="Lbl_Risultato" Content="Risultato: " HorizontalAlignment="Left" Margin="345,118,0,0" VerticalAlignment="Top" Width="121" Height="51" FontSize="20"/>
+
     </Grid>
 </Window>

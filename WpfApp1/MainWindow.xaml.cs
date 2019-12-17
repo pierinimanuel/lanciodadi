@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,9 +21,32 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        Random rnd = new Random();
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Btn_LanciaDadi_Click(object sender, RoutedEventArgs e)
+        {
+
+            var dado1 = Task.Factory.StartNew(Lancio);
+            var dado2 = Task.Factory.StartNew(Lancio);
+            var somma = Dispatcher.Invoke(() => Somma(dado1.Result, dado2.Result));
+
+            Lbl_Risultato.Content = $"La somma è{somma}";
+
+        }
+
+        public int Lancio()
+        {
+            int dado = rnd.Next(1, 7);
+            return dado;
+        }
+
+        private static int Somma(int dado1,int dado2)
+        {
+            return dado1 + dado2;
         }
     }
 }
